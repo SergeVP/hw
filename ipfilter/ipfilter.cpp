@@ -13,28 +13,6 @@ struct Address
   bool operator < (const Address & other) const
   {
     return std::tie(m_1, m_2, m_3, m_4) < std::tie(other.m_1, other.m_2, other.m_3, other.m_4);
-    /*!!!
-    auto check = [](int first, int second)
-    {
-      return std::tuple<bool, bool>({ first != secong, first < secong });
-    };
-
-    const auto & t1 = check(m_1, other.m_1);
-    if (std::get<0>(t1))
-    {
-      return std::get<1>(t1);
-    }
-    const auto & t2 = check(m_2, other.m_2);
-    if (std::get<0>(t2))
-    {
-      return std::get<1>(t2);
-    }
-    const auto & t3 = check(m_3, other.m_3);
-    if (std::get<0>(t3))
-    {
-      return std::get<1>(t3);
-    }
-    return m_4 < other.m_4;*/
   };
 
   int m_1 = 0;
@@ -55,21 +33,21 @@ Address convertAddressString(const std::string & stringIP)
 
 std::multiset<Address> readInput()
 {
-  std::multiset<Address> addressSet;
+  std::multiset<Address> aAddressesSet;
 
   while (!std::cin.eof())
   {
     std::string stringIP, dummy;
     std::cin >> stringIP >> dummy >> dummy;
-    addressSet.insert(convertAddressString(stringIP));
+    aAddressesSet.insert(convertAddressString(stringIP));
   }
 
-  return addressSet;
+  return aAddressesSet;
 }
 
 int main()
 {
-    const auto & addressSet = readInput();
+    const auto & aAddressesSet = readInput();
 
     // conditions
     auto any = [](const Address &) { return true; };
@@ -78,9 +56,9 @@ int main()
     auto any46 = [](const Address & adr) { return ((adr.m_1 == 46) || (adr.m_2 == 46) || (adr.m_3 == 46) || (adr.m_4 == 46)); };
 
     // helper
-    auto writer = [&addressSet](bool cond(const Address &))
+    auto writer = [&aAddressesSet](bool cond(const Address &))
     {
-      std::for_each(addressSet.rbegin(), addressSet.rend(), [&](const Address & address)
+      std::for_each(aAddressesSet.rbegin(), aAddressesSet.rend(), [&](const Address & address)
       {
         if (cond(address))
         {

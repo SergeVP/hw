@@ -37,7 +37,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
-          release_name: v0.0-alpha.${{ github.run_number }}
+          release_name: IPfilter v0.0-alpha.${{ github.run_number }}
           draft: false
           prerelease: true
  
