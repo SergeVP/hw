@@ -21,9 +21,9 @@ if (MSVC)
     target_compile_options(ipfilter_cli PRIVATE
         /W4
     )
-    target_compile_options(ipfilter PRIVATE
-        /W4
-    )
+#    target_compile_options(ipfilter PRIVATE
+#        /W4
+#    )
 #    target_compile_options(test_ipfilter PRIVATE
 #        /W4
 #    )
@@ -31,9 +31,9 @@ else ()
     target_compile_options(ipfilter_cli PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
-    target_compile_options(ipfilter PRIVATE
-        -Wall -Wextra -pedantic -Werror
-    )
+#    target_compile_options(ipfilter PRIVATE
+#        -Wall -Wextra -pedantic -Werror
+#    )
 #    target_compile_options(test_ipfilter PRIVATE
 #        -Wall -Wextra -pedantic -Werror
 #    )
