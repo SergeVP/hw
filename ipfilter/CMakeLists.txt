@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(ipfilter VERSION 0.0-alpha.$ENV{GITHUB_RUN_NUMBER})
+project(ipfilter VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 # find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 add_executable(ipfilter_cli ipfilter.cpp)
