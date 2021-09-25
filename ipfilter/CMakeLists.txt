@@ -7,9 +7,6 @@ add_executable(ipfilter_cli ipfilter.cpp)
 # add_library(ipfilter lib.cpp)
 # add_executable(test_ipfilter test_ipfilter.cpp)
 
-target_include_directories(ipfilter
-    PRIVATE "${CMAKE_BINARY_DIR}"
-)
 # set_target_properties(test_ipfilter PROPERTIES
 #     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
 #     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
