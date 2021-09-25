@@ -7,10 +7,6 @@ add_executable(ipfilter_cli ipfilter.cpp)
 # add_library(ipfilter lib.cpp)
 # add_executable(test_ipfilter test_ipfilter.cpp)
 
-set_target_properties(ipfilter_cli ipfilter PROPERTIES
-    CXX_STANDARD 14
-    CXX_STANDARD_REQUIRED ON
-)
 target_include_directories(ipfilter
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
@@ -19,9 +15,6 @@ target_include_directories(ipfilter
 #     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 # )
 
-target_link_libraries(ipfilter_cli PRIVATE
-    ipfilter
-)
 # target_link_libraries(test_ipfilter
 #     ${Boost_LIBRARIES}
 #     ipfilter
