@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(ipfilter VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
+project(ipfilter VERSION 0.0-alpha.$ENV{GITHUB_RUN_NUMBER})
 # find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 add_executable(ipfilter_cli ipfilter.cpp)
+# add_library(ipfilter lib.cpp)
 # add_executable(test_ipfilter test_ipfilter.cpp)
 
 set_target_properties(ipfilter_cli ipfilter PROPERTIES
@@ -13,11 +14,14 @@ set_target_properties(ipfilter_cli ipfilter PROPERTIES
 target_include_directories(ipfilter
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
-# set_target_properties(test_version PROPERTIES
+# set_target_properties(test_ipfilter PROPERTIES
 #     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
 #     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 # )
 
+target_link_libraries(ipfilter_cli PRIVATE
+    ipfilter
+)
 # target_link_libraries(test_ipfilter
 #     ${Boost_LIBRARIES}
 #     ipfilter
