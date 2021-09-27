@@ -27,7 +27,7 @@ jobs:
           submodules: true
       - run: cmake ./hello
       - run: cmake --build .
-      # - run: cmake --build . --target test
+      - run: cmake --build . --target test
       - run: cmake --build . --target package
       
       - name: Create Release
@@ -37,7 +37,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
-          release_name: v1.0.${{ github.run_number }}
+          release_name: Helloworld v1.0.${{ github.run_number }}
           draft: false
           prerelease: false
  
