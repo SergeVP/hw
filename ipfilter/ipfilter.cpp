@@ -52,7 +52,6 @@ std::multiset<Address> readInput()
   {
     std::string stringIP;
     std::cin >> stringIP >> dummy >> dummy;
-    //!!!printf("   *** %s    length: %d\n", stringIP.c_str(), stringIP.length());
     if (stringIP.empty())
     {
       continue;
