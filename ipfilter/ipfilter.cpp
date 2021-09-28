@@ -15,6 +15,11 @@ struct Address
     return std::tie(m_1, m_2, m_3, m_4) < std::tie(other.m_1, other.m_2, other.m_3, other.m_4);
   };
 
+  bool isValid() const
+  {
+    return m_1 >= 0 && m_2 >= 0 && m_3 >= 0 && m_4 >= 0 && m_1 < 256 && m_2 < 256 && m_3 < 256 && m_4 < 256;
+  }
+
   int m_1 = 0;
   int m_2 = 0;
   int m_3 = 0;
@@ -28,18 +33,38 @@ Address convertAddressString(const std::string & stringIP)
   char dummy; 
   sstream >> address.m_1 >> dummy >> address.m_2 >> dummy >> address.m_3 >> dummy >> address.m_4;
 
-  return address;
+  if (address.isValid())
+  {
+    return address;
+  }
+  else
+  {
+    throw std::string{ "Invalid input string -- terminated." };
+  }
 }
 
 std::multiset<Address> readInput()
 {
   std::multiset<Address> aAddressesSet;
 
+  std::string dummy;
   while (!std::cin.eof())
   {
-    std::string stringIP, dummy;
+    std::string stringIP;
     std::cin >> stringIP >> dummy >> dummy;
-    aAddressesSet.insert(convertAddressString(stringIP));
+    //!!!printf("   *** %s    length: %d\n", stringIP.c_str(), stringIP.length());
+    if (stringIP.empty())
+    {
+      continue;
+    }
+    if (stringIP.size() > 6)
+    {
+      aAddressesSet.insert(convertAddressString(stringIP));
+    }
+    else
+    {
+      throw std::string{ "Invalid input string -- terminated." };
+    }
   }
 
   return aAddressesSet;
@@ -47,6 +72,8 @@ std::multiset<Address> readInput()
 
 int main()
 {
+  try
+  {
     const auto & aAddressesSet = readInput();
 
     // conditions
@@ -72,4 +99,11 @@ int main()
     writer(first1);
     writer(first46second70);
     writer(any46);
+  }
+
+  catch (std::string message)
+  {
+    std::cout << message.c_str() << std::endl;
+    exit(1);
+  }
 }
