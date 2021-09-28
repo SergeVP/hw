@@ -1,9 +1,8 @@
 // ipfilter.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream> 
-
 #include <algorithm>
+#include <iostream>
 #include <set>
 #include <sstream>
 #include <tuple>
