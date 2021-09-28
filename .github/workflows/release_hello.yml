@@ -27,7 +27,7 @@ jobs:
           submodules: true
       - run: cmake ./hello
       - run: cmake --build .
-      - run: cmake --build . --target test
+#      - run: cmake --build . --target test
       - run: cmake --build . --target package
       
       - name: Create Release
