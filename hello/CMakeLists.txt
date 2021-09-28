@@ -69,6 +69,6 @@ set(CPACK_PACKAGE_CONTACT example@example.com)
 
 include(CPack)
 
-# enable_testing()
+#enable_testing()
 
-# add_test(test_version test_version)
+#add_test(test_version test_version)
