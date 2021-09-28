@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.2)
 
 project(helloworld VERSION 1.0.$ENV{GITHUB_RUN_NUMBER})
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 configure_file(version.h.in version.h)
@@ -24,10 +28,14 @@ set_target_properties(test_version PROPERTIES
 target_link_libraries(helloworld_cli PRIVATE
     helloworld
 )
- target_link_libraries(test_version
-     ${Boost_LIBRARIES}
+target_link_libraries(test_version
+     ${CONAN_LIBS}
      helloworld
  )
+ #target_link_libraries(test_version
+ #    ${Boost_LIBRARIES}
+ #    helloworld
+ #)
 
 if (MSVC)
     target_compile_options(helloworld_cli PRIVATE
