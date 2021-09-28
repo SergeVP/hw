@@ -3,9 +3,10 @@ cmake_minimum_required(VERSION 3.2)
 project(helloworld VERSION 1.0.$ENV{GITHUB_RUN_NUMBER})
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+conan_basic_setup(TARGETS)
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
 
 configure_file(version.h.in version.h)
 
@@ -22,14 +23,14 @@ target_include_directories(helloworld
 )
 set_target_properties(test_version PROPERTIES
      COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIRS}
  )
 
 target_link_libraries(helloworld_cli PRIVATE
     helloworld
 )
 target_link_libraries(test_version
-     ${CONAN_LIBS}
+     ${Boost_LIBRARIES}
      helloworld
  )
  #target_link_libraries(test_version

@@ -3,7 +3,7 @@ boost/1.66.0@conan/stable
 # Poco/1.9.0@pocoproject/stable
 
 [generators]
-cmake
+cmake_paths
 
 [options]
 Boost:shared=False
