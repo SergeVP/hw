@@ -29,10 +29,12 @@ Address convertAddressString(const std::string & stringIP)
 {
   Address address;
   std::stringstream sstream(stringIP);
-  char dummy; 
-  sstream >> address.m_1 >> dummy >> address.m_2 >> dummy >> address.m_3 >> dummy >> address.m_4;
+  char dot1 = 0;
+  char dot2 = 0;
+  char dot3 = 0;
+  sstream >> address.m_1 >> dot1 >> address.m_2 >> dot2 >> address.m_3 >> dot3 >> address.m_4;
 
-  if (address.isValid())
+  if (address.isValid() && (dot1 == '.') && (dot2 == '.') && (dot3 == '.'))
   {
     return address;
   }
