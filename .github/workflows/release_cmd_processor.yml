@@ -39,7 +39,7 @@ jobs:
           tag_name: ${{ github.run_number }}
           release_name: BulkCmdProcessor v0.0-alpha.${{ github.run_number }}
           draft: false
-          prerelease: false
+          prerelease: true
  
       - name: Upload Release Asset
         id: upload-release-asset
