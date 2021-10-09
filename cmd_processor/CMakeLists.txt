@@ -2,21 +2,21 @@ cmake_minimum_required(VERSION 3.2)
 
 project(bulk VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 
-add_executable(bulk_cli cmd_processor.cpp)
+add_executable(bulk cmd_processor.cpp)
 # add_library(bulk block.cpp)
 
 if (MSVC)
-    target_compile_options(bulk_cli PRIVATE
+    target_compile_options(bulk PRIVATE
         /W4
     )
 else ()
-    target_compile_options(bulk_cli PRIVATE
+    target_compile_options(bulk PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
 endif()
 
 
-install(TARGETS bulk_cli RUNTIME DESTINATION bin)
+install(TARGETS bulk RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
