@@ -103,13 +103,13 @@ private:
   {
     fileName = "bulk" + fileName + ".log";
     
-    FILE * pFile = nullptr;
-    auto err = fopen64(&pFile, fileName.c_str(), "w+");
+    FILE * pFile = fopen(fileName.c_str(), "w+");
+    /*auto err = fopen_s(&pFile, fileName.c_str(), "w+");
     if (err != 0)
     {
       //!!! assert
       return;
-    }
+    }*/
 
     for (const auto & cmd : m_aCommands)
     {
