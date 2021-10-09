@@ -104,7 +104,7 @@ private:
     fileName = "bulk" + fileName + ".log";
     
     FILE * pFile = nullptr;
-    auto err = fopen_s(&pFile, fileName.c_str(), "w+");
+    auto err = fopen64(&pFile, fileName.c_str(), "w+");
     if (err != 0)
     {
       //!!! assert
@@ -159,13 +159,13 @@ public:
 private:
   void doOnComplete()
   {
-    if (m_aCommands.size() == m_n)
+    if (m_aCommands.size() == static_cast<size_t>(m_n))
     {
       flush();
     }
   }
 
-  int m_n = 0;
+  unsigned m_n = 0;
   bool m_onDuty = true;
 };
 
