@@ -9,9 +9,6 @@ set_target_properties(bulk bulk PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
-target_include_directories(cmd_processor
-    PRIVATE "${CMAKE_BINARY_DIR}"
-)
 
 target_link_libraries(bulk PRIVATE
     bulk_lib
