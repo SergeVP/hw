@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.2)
 project(bulk VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 
 add_executable(bulk cmd_processor.cpp)
-# add_library(bulk block.cpp)
+add_library(bulk block.cpp)
 
 if (MSVC)
     target_compile_options(bulk PRIVATE
