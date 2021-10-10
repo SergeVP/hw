@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(bulk VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
+project(bulk VERSION 1.0.$ENV{GITHUB_RUN_NUMBER})
 
 add_executable(bulk cmd_processor.cpp)
 add_library(bulk_lib block.cpp)

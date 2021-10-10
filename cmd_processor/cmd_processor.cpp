@@ -95,29 +95,23 @@ int main(int argc, char *argv[])
   StaticBlock staticBlock(staticBlockLength);
   DynBlock dynamicBlock;
 
-  try
+  for (;;)
   {
-    for (;;)
+    std::string s;
+    
+    std::cin >> s;
+
+    if (s.empty())
     {
-      std::string s;
-
-      std::cin >> s;
-      if (s.empty())
-      {
-        throw (false);
-      }
-
-      staticBlock.add(s);
-      dynamicBlock.add(s);
-      /*!!!auto temp = time(NULL) + 2;
-      while (temp > time(NULL)); */
+      staticBlock.onEOF();
+      dynamicBlock.onEOF();
+      break;
     }
-  }
 
-  catch (...)
-  {
-    staticBlock.onEOF();
-    dynamicBlock.onEOF();
+    staticBlock.add(s);
+    dynamicBlock.add(s);
+    //      auto temp = time(NULL) + 2;  // uncomment these two lines to simulate delayed input
+    //      while (temp > time(NULL)); 
   }
 }
 

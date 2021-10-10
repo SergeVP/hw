@@ -78,17 +78,12 @@ void Block::outFile(std::string fileName) const
   fileName = "bulk" + fileName + ".log";
 
   FILE * pFile = fopen(fileName.c_str(), "w+");
-  /*auto err = fopen_s(&pFile, fileName.c_str(), "w+");
-  if (err != 0)
-  {
-    //!! assert
-    return;
-  }*/
 
   for (const auto & cmd : m_aCommands)
   {
     fprintf(pFile, "%s", cmd.m_command.c_str());
   }
 
+  fflush(pFile);
   fclose(pFile);
 }
